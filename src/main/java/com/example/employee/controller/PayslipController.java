@@ -39,11 +39,10 @@ public class PayslipController {
             PdfWriter.getInstance(document, new FileOutputStream(filename));
             document.open();
 
-            // Add employee photo from the classpath resource
             try {
                 ClassPathResource resource = new ClassPathResource(employee.getPhoto());
                 Image photo = Image.getInstance(resource.getURL());
-                photo.scaleToFit(100, 100);  // Adjust size if needed
+                photo.scaleToFit(100, 100);
                 photo.setAlignment(Image.ALIGN_CENTER);
                 document.add(photo);
             } catch (IOException e) {
@@ -66,4 +65,5 @@ public class PayslipController {
 
         return "Payslip generated: " + filename;
     }
+    
 }
